@@ -3,26 +3,34 @@
 const arrows = document.querySelectorAll('.fa-arrow-down');
 const form = document.querySelector('form');
 
-const showInputStatus = function (input) {
-  if (input === false) {
+const shakeEl = function (inputEl) {
+  inputEl.parentElement.style.animation = 'shake 0.2s ease';
+  setTimeout(() => {
+    inputEl.parentElement.style.animation = '';
+  }, 250);
+};
+
+const showInputStatus = function (inputStatus, inputEl) {
+  if (inputStatus === false) {
     document.body.style.backgroundColor = 'rgb(189, 87, 87)';
+    shakeEl(inputEl);
     return false;
   }
-  if (input === true) {
+  if (inputStatus === true) {
     document.body.style.backgroundColor = 'rgb(87, 189, 130)';
     return true;
   }
 };
 
-const validUserName = function (input) {
-  const validInput = input.value.length > 6;
-  return showInputStatus(validInput);
+const validInputLength = function (input, min) {
+  const validInput = input.value.length > min;
+  return showInputStatus(validInput, input);
 };
 
 const validEmail = function (input) {
   const regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
   const validInput = regex.test(input.value);
-  return showInputStatus(validInput);
+  return showInputStatus(validInput, input);
 };
 
 const revealNextField = function (curEl, nextEl) {
@@ -41,7 +49,7 @@ const handleInput = function (e) {
 
   if (e.target !== arrow) return;
 
-  if (input.id === 'username' && validUserName(input)) {
+  if (input.id === 'username' && validInputLength(input, 6)) {
     revealNextField(field, nextField);
   }
 
@@ -49,7 +57,7 @@ const handleInput = function (e) {
     revealNextField(field, nextField);
   }
 
-  if (input.id === 'password' && validPassword(input)) {
+  if (input.id === 'password' && validInputLength(input, 13)) {
     revealNextField(field, nextField);
   }
 };
