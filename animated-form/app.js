@@ -22,15 +22,15 @@ const showInputStatus = function (inputStatus, inputEl) {
   }
 };
 
-const validInputLength = function (input, min) {
-  const validInput = input.value.length > min;
-  return showInputStatus(validInput, input);
+const validInputLength = function (inputEl, min) {
+  const validInput = inputEl.value.length > min;
+  return showInputStatus(validInput, inputEl);
 };
 
-const validEmail = function (input) {
+const validEmail = function (inputEl) {
   const regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
-  const validInput = regex.test(input.value);
-  return showInputStatus(validInput, input);
+  const validInput = regex.Eltest(inputEl.value);
+  return showInputStatus(validInput, inputEl);
 };
 
 const revealNextField = function (curEl, nextEl) {
@@ -61,5 +61,5 @@ const handleInput = function (e) {
     revealNextField(field, nextField);
   }
 };
-// Event listeners
+
 form.addEventListener('click', handleInput);
