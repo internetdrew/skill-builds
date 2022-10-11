@@ -3,40 +3,26 @@
 const arrows = document.querySelectorAll('.fa-arrow-down');
 const form = document.querySelector('form');
 
-const showStatus = function (status) {
-  if (status === 'error') {
+const showInputStatus = function (input) {
+  if (input === false) {
     document.body.style.backgroundColor = 'rgb(189, 87, 87)';
+    return false;
   }
-  if (status === 'success') {
+  if (input === true) {
     document.body.style.backgroundColor = 'rgb(87, 189, 130)';
+    return true;
   }
 };
 
 const validUserName = function (input) {
-  const valid = input.value.length > 6;
-
-  if (!valid) {
-    showStatus('error');
-  }
-
-  if (valid) {
-    showStatus('success');
-    return true;
-  }
+  const validInput = input.value.length > 6;
+  return showInputStatus(validInput);
 };
 
 const validEmail = function (input) {
   const regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
-  const valid = regex.test(input.value);
-
-  if (!valid) {
-    showStatus('error');
-  }
-
-  if (valid) {
-    showStatus('success');
-    return true;
-  }
+  const validInput = regex.test(input.value);
+  return showInputStatus(validInput);
 };
 
 const revealNextField = function (curEl, nextEl) {
@@ -47,8 +33,7 @@ const revealNextField = function (curEl, nextEl) {
   nextEl.classList.add('active');
 };
 
-// Event listeners
-form.addEventListener('click', e => {
+const handleInput = function (e) {
   const field = e.target.closest('.field');
   const arrow = field.querySelector('.fa-arrow-down');
   const input = field.querySelector('input');
@@ -63,4 +48,10 @@ form.addEventListener('click', e => {
   if (input.id === 'email' && validEmail(input)) {
     revealNextField(field, nextField);
   }
-});
+
+  if (input.id === 'password' && validPassword(input)) {
+    revealNextField(field, nextField);
+  }
+};
+// Event listeners
+form.addEventListener('click', handleInput);
