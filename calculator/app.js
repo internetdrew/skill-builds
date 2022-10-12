@@ -71,19 +71,20 @@ class Calculator {
   }
 
   getDisplayNumber(number) {
-    const strNum = number.toString();
-    const integerDigits = parseFloat(strNum.split('.')[0]);
+    const stringNumber = number.toString();
+    console.log(stringNumber);
+    const integerDigits = parseFloat(stringNumber.split('.')[0]);
     console.log(integerDigits);
-    const decimalDigits = strNum.split('.')[1];
+    const decimalDigits = stringNumber.split('.')[1];
     console.log(decimalDigits);
     let integerDisplay;
 
     if (isNaN(integerDigits)) {
-      return (integerDisplay = '');
+      integerDisplay = '';
     }
 
-    if (typeof integerDigits === 'number') {
-      integerDisplay = integerDigits.toLocaleString('en', {
+    if (!isNaN(integerDigits)) {
+      integerDisplay = integerDigits.toLocaleString('en-US', {
         maximumFractionDigits: 0,
       });
     }
@@ -92,7 +93,9 @@ class Calculator {
       return `${integerDisplay}.${decimalDigits}`;
     }
 
-    return integerDisplay;
+    if (decimalDigits === undefined) {
+      return integerDisplay;
+    }
   }
 
   updateDisplay() {
