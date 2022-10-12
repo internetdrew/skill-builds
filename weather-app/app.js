@@ -1,5 +1,7 @@
 'strict mode';
 
+const locationName = document.getElementById('location-name');
+
 const proxy = 'https://cors-anywhere.herokuapp.com/';
 
 window.addEventListener('load', () => {
@@ -13,6 +15,7 @@ window.addEventListener('load', () => {
       console.log(data);
       const { city, state } = data.properties.relativeLocation.properties;
       console.log(city, state);
+      locationName.textContent = `${city}, ${state}`;
 
       const forecastRes = await fetch(data.properties.forecast);
       const forecastData = await forecastRes.json();
