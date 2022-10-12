@@ -72,10 +72,27 @@ class Calculator {
 
   getDisplayNumber(number) {
     const strNum = number.toString();
-    const integerDigits = parseFloat(strNum.split('.'));
-    const floatNumber = parseFloat(number);
-    if (isNaN(floatNumber)) return '';
-    return floatNumber.toLocaleString('en-US');
+    const integerDigits = parseFloat(strNum.split('.')[0]);
+    console.log(integerDigits);
+    const decimalDigits = strNum.split('.')[1];
+    console.log(decimalDigits);
+    let integerDisplay;
+
+    if (isNaN(integerDigits)) {
+      return (integerDisplay = '');
+    }
+
+    if (typeof integerDigits === 'number') {
+      integerDisplay = integerDigits.toLocaleString('en', {
+        maximumFractionDigits: 0,
+      });
+    }
+
+    if (decimalDigits !== undefined) {
+      return `${integerDisplay}.${decimalDigits}`;
+    }
+
+    return integerDisplay;
   }
 
   updateDisplay() {
