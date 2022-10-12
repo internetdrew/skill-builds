@@ -72,11 +72,8 @@ class Calculator {
 
   getDisplayNumber(number) {
     const stringNumber = number.toString();
-    console.log(stringNumber);
     const integerDigits = parseFloat(stringNumber.split('.')[0]);
-    console.log(integerDigits);
     const decimalDigits = stringNumber.split('.')[1];
-    console.log(decimalDigits);
     let integerDisplay;
 
     if (isNaN(integerDigits)) {
