@@ -42,3 +42,7 @@ body {
 .degrees-section h2 {
   font-size: 40px;
 }
+
+.temperature-description p {
+  font-size: 1.2rem;
+}
