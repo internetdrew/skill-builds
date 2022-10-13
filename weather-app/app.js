@@ -1,4 +1,4 @@
-'strict mode';
+'use strict';
 
 const locationNameEl = document.getElementById('location-name');
 const timeEl = document.getElementById('time');
@@ -29,6 +29,23 @@ const displayForecast = function (forecastObj) {
   temperatureEl.textContent = forecastObj.temperature;
   temperatureUnitEl.textContent = forecastObj.temperatureUnit;
   tempDescriptionEl.textContent = forecastObj.shortForecast;
+
+  const iconStrArr = forecastObj.icon.split('/');
+  const icon = iconStrArr
+    .find(el => el.includes('_'))
+    .split(',')[0]
+    .toUpperCase();
+  console.log(icon);
+  setIcons(icon, iconEl);
+};
+
+const setIcons = function (icon, canvasEl) {
+  const skycons = new Skycons({ color: 'white' });
+  switch (icon) {
+    case 'RAIN_SHOWERS':
+      skycons.add(canvasEl, Skycons.RAIN);
+  }
+  skycons.play();
 };
 
 window.addEventListener('load', () => {
@@ -65,5 +82,9 @@ window.addEventListener('load', () => {
 
       displayForecast(forecastData);
     });
+  }
+
+  if (!navigator.geolocation) {
+    locationNameEl.textContent = 'Please enable location';
   }
 });
