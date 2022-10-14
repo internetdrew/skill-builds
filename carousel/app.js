@@ -7,17 +7,23 @@ const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 
 let currentSlide = 1;
-const size = carouselImages[0].clientWidth;
+const imgWidth = carouselImages[0].clientWidth;
 
-let pixelOffset = size * currentSlide;
-console.log(pixelOffset);
-
-carouselSlider.style.transform = `translateX(-${size * currentSlide}px)`;
+carouselSlider.style.transform = `translateX(-${imgWidth}px)`;
 
 nextBtn.addEventListener('click', () => {
-  carouselSlider.style.transition = 'transform 0.3s ease-in-out';
-  currentSlide++;
-  carouselSlider.style.transform = `translateX(-${pixelOffset})px`;
-  console.log(pixelOffset, carouselSlider);
+  if (currentSlide < carouselImages.length - 1) {
+    currentSlide++;
+    carouselSlider.style.transform = `translateX(-${
+      imgWidth * currentSlide
+    }px)`;
+    console.log(currentSlide, carouselSlider);
+  }
 });
-console.log(carouselSlider);
+
+// prevBtn.addEventListener('click', () => {
+//   if (currentSlide > -1) {
+//     currentSlide--;
+//     carousel.style.transform = ``;
+//   }
+// });
