@@ -30,6 +30,7 @@ const displayForecast = function (forecastObj) {
   temperatureUnitEl.textContent = forecastObj.temperatureUnit;
   tempDescriptionEl.textContent = forecastObj.shortForecast;
   const { shortForecast } = forecastObj;
+  console.log(shortForecast);
 
   setIcons(shortForecast.toLowerCase(), iconEl);
 };
@@ -37,7 +38,13 @@ const displayForecast = function (forecastObj) {
 const setIcons = function (shortForecast, canvasEl) {
   const skycons = new Skycons({ color: 'white' });
 
-  if (shortForecast.includes('rain')) skycons.add(canvasEl, Skycons.RAIN);
+  if (
+    shortForecast.includes('rain') ||
+    shortForecast.includes('showers') ||
+    shortForecast.includes('thunderstorms')
+  ) {
+    skycons.add(canvasEl, Skycons.RAIN);
+  }
 
   skycons.play();
 };
