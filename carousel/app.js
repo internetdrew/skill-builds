@@ -12,12 +12,14 @@ const imgWidth = carouselImages[0].clientWidth;
 carouselSlider.style.transform = `translateX(-${imgWidth}px)`;
 
 nextBtn.addEventListener('click', () => {
+  if (currentSlide >= carouselImages.length - 1) return;
   carouselSlider.style.transition = 'transform 0.3s ease-in-out';
   currentSlide++;
   carouselSlider.style.transform = `translateX(-${imgWidth * currentSlide}px)`;
 });
 
 prevBtn.addEventListener('click', () => {
+  if (currentSlide <= 0) return;
   carouselSlider.style.transition = 'transform 0.3s ease-in-out';
   currentSlide--;
   carouselSlider.style.transform = `translateX(${-imgWidth * currentSlide}px)`;
