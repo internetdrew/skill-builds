@@ -22,7 +22,6 @@ const getLocationForecast = async function (lat, long) {
 };
 
 const displayForecast = function (forecastObj) {
-  console.log(forecastObj);
   locationNameEl.textContent = `${forecastObj.city}, ${forecastObj.state}`;
 
   timeEl.textContent = forecastObj.time;
@@ -30,7 +29,6 @@ const displayForecast = function (forecastObj) {
   temperatureUnitEl.textContent = forecastObj.temperatureUnit;
   tempDescriptionEl.textContent = forecastObj.shortForecast;
   const { shortForecast } = forecastObj;
-  console.log(shortForecast);
 
   setIcon(shortForecast.toLowerCase(), iconEl, forecastObj.isDaytime);
 };
@@ -91,9 +89,6 @@ window.addEventListener('load', () => {
       const res = await fetch(forecast);
       if (!res.ok) console.log('Problem fetching forecast: 2');
       const data = await res.json();
-      data.properties.periods.forEach(el =>
-        console.log(el.shortForecast.toLowerCase())
-      );
 
       const {
         name: time,
