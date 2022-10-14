@@ -3,8 +3,8 @@
 const carouselSlider = document.getElementById('carousel-slider');
 const carouselImages = document.querySelectorAll('.carousel-slider img');
 
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
 
 let currentSlide = 1;
 const imgWidth = carouselImages[0].clientWidth;
