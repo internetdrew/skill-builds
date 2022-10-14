@@ -36,13 +36,9 @@ const displayForecast = function (forecastObj) {
 
 const setIcons = function (shortForecast, canvasEl) {
   const skycons = new Skycons({ color: 'white' });
-  switch (shortForecast) {
-    case 'showers and thunderstorms':
-    case 'slight chance rain showers then mostly sunny':
-    case 'rain showers likely':
-    case 'chance rain showers':
-      skycons.add(canvasEl, Skycons.RAIN);
-  }
+
+  if (shortForecast.includes('rain')) skycons.add(canvasEl, Skycons.RAIN);
+
   skycons.play();
 };
 
