@@ -29,20 +29,18 @@ const displayForecast = function (forecastObj) {
   temperatureEl.textContent = forecastObj.temperature;
   temperatureUnitEl.textContent = forecastObj.temperatureUnit;
   tempDescriptionEl.textContent = forecastObj.shortForecast;
+  const { shortForecast } = forecastObj;
 
-  const iconStrArr = forecastObj.icon.split('/');
-  const icon = iconStrArr
-    .find(el => el.includes('_'))
-    .split(',')[0]
-    .toUpperCase();
-  console.log(icon);
-  setIcons(icon, iconEl);
+  setIcons(shortForecast.toLowerCase(), iconEl);
 };
 
-const setIcons = function (icon, canvasEl) {
+const setIcons = function (shortForecast, canvasEl) {
   const skycons = new Skycons({ color: 'white' });
-  switch (icon) {
-    case 'RAIN_SHOWERS':
+  switch (shortForecast) {
+    case 'showers and thunderstorms':
+    case 'slight chance rain showers then mostly sunny':
+    case 'rain showers likely':
+    case 'chance rain showers':
       skycons.add(canvasEl, Skycons.RAIN);
   }
   skycons.play();
@@ -57,6 +55,9 @@ window.addEventListener('load', () => {
       const res = await fetch(forecast);
       if (!res.ok) console.log('Problem fetching forecast: 2');
       const data = await res.json();
+      data.properties.periods.forEach(el =>
+        console.log(el.shortForecast.toLowerCase())
+      );
 
       const {
         name: time,
