@@ -32,10 +32,10 @@ const displayForecast = function (forecastObj) {
   const { shortForecast } = forecastObj;
   console.log(shortForecast);
 
-  setIcons(shortForecast.toLowerCase(), iconEl, forecastObj.isDaytime);
+  setIcon(shortForecast.toLowerCase(), iconEl, forecastObj.isDaytime);
 };
 
-const setIcons = function (shortForecast, canvasEl, isDaytime) {
+const setIcon = function (shortForecast, canvasEl, isDaytime) {
   const skycons = new Skycons({ color: 'white' });
 
   if (
@@ -46,12 +46,37 @@ const setIcons = function (shortForecast, canvasEl, isDaytime) {
     skycons.add(canvasEl, Skycons.RAIN);
   }
 
-  if (shortForecast.includes('clear') && isDaytime === true) {
-    skycons.add(canvasEl, skycons.CLEAR_DAY);
+  if (shortForecast.includes('clear') && isDaytime) {
+    skycons.add(canvasEl, Skycons.CLEAR_DAY);
   }
 
-  if (shortForecast.includes('clear') && isDaytime === false) {
-    skycons.add(canvasEl, skycons.CLEAR_NIGHT);
+  if (shortForecast.includes('clear') && !isDaytime) {
+    skycons.add(canvasEl, Skycons.CLEAR_NIGHT);
+  }
+
+  if (shortForecast.includes('snow')) {
+    skycons.add(canvasEl, Skycons.SNOW);
+  }
+
+  if (shortForecast.includes('wind')) {
+    skycons.add(canvasEl, Skycons.WIND);
+  }
+
+  if (shortForecast.includes('sleet')) {
+    skycons.add(canvasEl, Skycons.SLEET);
+  }
+
+  if (shortForecast.includes('fog')) {
+    skycons.add(canvasEl, Skycons.FOG);
+  }
+  if (shortForecast.includes('cloudy')) {
+    skycons.add(canvasEl, Skycons.CLOUDY);
+  }
+  if (shortForecast.includes('partly cloudy') && isDaytime) {
+    skycons.add(canvasEl, Skycons.PARTLY_CLOUDY_DAY);
+  }
+  if (shortForecast.includes('partly cloudy') && !isDaytime) {
+    skycons.add(canvasEl, Skycons.PARTLY_CLOUDY_NIGHT);
   }
 
   skycons.play();
