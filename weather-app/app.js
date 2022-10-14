@@ -32,10 +32,10 @@ const displayForecast = function (forecastObj) {
   const { shortForecast } = forecastObj;
   console.log(shortForecast);
 
-  setIcons(shortForecast.toLowerCase(), iconEl);
+  setIcons(shortForecast.toLowerCase(), iconEl, forecastObj.isDaytime);
 };
 
-const setIcons = function (shortForecast, canvasEl) {
+const setIcons = function (shortForecast, canvasEl, isDaytime) {
   const skycons = new Skycons({ color: 'white' });
 
   if (
@@ -44,6 +44,14 @@ const setIcons = function (shortForecast, canvasEl) {
     shortForecast.includes('thunderstorms')
   ) {
     skycons.add(canvasEl, Skycons.RAIN);
+  }
+
+  if (shortForecast.includes('clear') && isDaytime === true) {
+    skycons.add(canvasEl, skycons.CLEAR_DAY);
+  }
+
+  if (shortForecast.includes('clear') && isDaytime === false) {
+    skycons.add(canvasEl, skycons.CLEAR_NIGHT);
   }
 
   skycons.play();
