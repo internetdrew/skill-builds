@@ -2,7 +2,6 @@
 
 const carouselSlider = document.getElementById('carousel-slider');
 const carouselImages = document.querySelectorAll('.carousel-slider img');
-
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 
