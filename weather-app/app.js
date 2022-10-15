@@ -23,6 +23,7 @@ const getLocationForecast = async function (lat, long) {
 
 const displayForecast = function (forecastObj) {
   locationNameEl.textContent = `${forecastObj.city}, ${forecastObj.state}`;
+  console.log(forecastObj);
 
   timeEl.textContent = forecastObj.time;
   temperatureEl.textContent = forecastObj.temperature;
@@ -34,7 +35,7 @@ const displayForecast = function (forecastObj) {
 };
 
 const setIcon = function (shortForecast, canvasEl, isDaytime) {
-  const skycons = new Skycons({ color: 'white' });
+  const skycons = new Skycons({ color: 'red' });
 
   if (
     shortForecast.includes('rain') ||
@@ -44,7 +45,10 @@ const setIcon = function (shortForecast, canvasEl, isDaytime) {
     skycons.add(canvasEl, Skycons.RAIN);
   }
 
-  if (shortForecast.includes('clear') && isDaytime) {
+  if (
+    shortForecast.includes('clear') ||
+    (shortForecast.includes('sunny') && isDaytime)
+  ) {
     skycons.add(canvasEl, Skycons.CLEAR_DAY);
   }
 

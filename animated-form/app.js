@@ -29,7 +29,7 @@ const validInputLength = function (inputEl, min) {
 
 const validEmail = function (inputEl) {
   const regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
-  const validInput = regex.Eltest(inputEl.value);
+  const validInput = regex.test(inputEl.value);
   return showInputStatus(validInput, inputEl);
 };
 
