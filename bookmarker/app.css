@@ -30,7 +30,7 @@ button {
   width: 50%;
 }
 h1 {
-  padding: 2rem 0;
+  padding: 1rem 0;
   border-bottom: 1px solid #e9ecef;
 }
 
@@ -76,7 +76,8 @@ h1 {
   padding: 1rem 2rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
+  margin-top: 1rem;
 }
 
 .form input[type='submit']:active {
@@ -107,10 +108,12 @@ h1 {
   padding: 1rem 2rem;
   border-radius: 0.3rem;
   border: none;
+  text-decoration: none;
 }
 
 .btn-visit {
   background-color: #fff;
+  color: #333;
 }
 
 .btn-delete {
