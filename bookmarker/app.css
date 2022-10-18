@@ -1,0 +1,86 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  width: 50%;
+}
+h1 {
+  padding: 2rem 0;
+  border-bottom: 1px solid #999;
+}
+
+.form-container {
+  margin-top: 2rem;
+  background-color: #999;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.form {
+  padding: 3rem 0;
+  text-align: center;
+  width: 80%;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.form-control label {
+  margin-bottom: 1rem;
+}
+
+.form-control input {
+  font-size: 1.6rem;
+  padding: 1rem;
+  outline: none;
+}
+
+.form button {
+  background-color: blue;
+  color: white;
+  font-size: 2rem;
+  outline: 0;
+  border: 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.bookmarks {
+  margin-top: 3rem;
+  padding: 2rem 0;
+}
+
+.bookmark {
+  background-color: #999;
+  padding: 4rem 3rem;
+  display: inline-flex;
+  width: 100%;
+  gap: 1rem;
+  border-radius: 0.5rem;
+}
+
+.bookmark-name {
+  font-size: 2.8rem;
+}

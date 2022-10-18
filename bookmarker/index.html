@@ -11,7 +11,34 @@
       crossorigin="anonymous"
     ></script>
     <script defer src="./app.js"></script>
-    <title>Document</title>
+    <title>Bookmarker</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <h1>Bookmarker</h1>
+
+      <div class="form-container">
+        <form class="form">
+          <h2>Bookmark Your Favorite Websites</h2>
+          <div class="form-control">
+            <label for="site-name">Site Name</label>
+            <input type="text" id="site-name" placeholder="Website name" />
+          </div>
+          <div class="form-control">
+            <label for="site-url">Site URL</label>
+            <input type="url" id="site-url" placeholder="Website url" />
+          </div>
+          <button>Submit</button>
+        </form>
+      </div>
+
+      <div class="bookmarks">
+        <div class="bookmark">
+          <span class="bookmark-name">Name</span>
+          <button class="bookmark--btn btn-visit">Visit</button>
+          <button class="bookmark--btn btn-delete">Delete</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
