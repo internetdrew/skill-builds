@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 *,
 *::before,
 *::after {
@@ -12,6 +14,8 @@ html {
 
 body {
   font-size: 1.6rem;
+  font-family: 'Poppins', sans-serif;
+
   display: flex;
   justify-content: center;
   height: 100vh;
@@ -23,12 +27,12 @@ body {
 }
 h1 {
   padding: 2rem 0;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #e9ecef;
 }
 
 .form-container {
   margin-top: 2rem;
-  background-color: #999;
+  background-color: #e9ecef;
   border-radius: 0.5rem;
   display: flex;
   justify-content: center;
@@ -53,17 +57,19 @@ h1 {
 
 .form-control input {
   font-size: 1.6rem;
-  padding: 1rem;
+  padding: 1.2rem;
   outline: none;
+  border-radius: 0.5rem;
+  border: none;
 }
 
 .form button {
-  background-color: blue;
+  background-color: #228be6;
   color: white;
   font-size: 2rem;
   outline: 0;
   border: 0;
-  padding: 1rem;
+  padding: 1rem 2rem;
   border-radius: 0.5rem;
 }
 
@@ -73,14 +79,31 @@ h1 {
 }
 
 .bookmark {
-  background-color: #999;
+  background-color: #e9ecef;
   padding: 4rem 3rem;
   display: inline-flex;
+  align-items: center;
   width: 100%;
-  gap: 1rem;
+  gap: 1.2rem;
   border-radius: 0.5rem;
 }
 
 .bookmark-name {
   font-size: 2.8rem;
+}
+
+.bookmark--btn {
+  font-size: 1.6rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  border: none;
+}
+
+.btn-visit {
+  background-color: #fff;
+}
+
+.btn-delete {
+  background-color: #f03e3e;
+  color: #fff;
 }
