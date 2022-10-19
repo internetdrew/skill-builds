@@ -72,11 +72,7 @@ const loadSavedBookmarks = function () {
   renderBookmarks(bookmarks);
 };
 
-const deleteBookmark = function (e) {};
-
-window.addEventListener('load', loadSavedBookmarks);
-form.addEventListener('submit', saveBookmark);
-bookmarksEl.addEventListener('click', e => {
+const deleteBookmark = function (e) {
   if (e.target.classList.contains('btn-delete')) {
     const bookmarkEl = e.target.closest('.bookmark');
     const bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
@@ -92,4 +88,8 @@ bookmarksEl.addEventListener('click', e => {
       renderBookmarks(bookmarks);
     }
   }
-});
+};
+
+window.addEventListener('load', loadSavedBookmarks);
+form.addEventListener('submit', saveBookmark);
+bookmarksEl.addEventListener('click', deleteBookmark);
