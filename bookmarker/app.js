@@ -10,6 +10,8 @@ const saveBookmark = function (e) {
   const siteName = siteNameEl.value;
   const siteUrl = siteUrlEl.value;
 
+  if (!siteName.trim() || !siteUrl.trim()) return;
+
   const bookmark = {
     name: siteName,
     url: siteUrl,
@@ -26,6 +28,20 @@ const saveBookmark = function (e) {
     bookmarks.push(bookmark);
     localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
   }
+};
+
+const renderBookmarks = function (bookmarks) {
+  bookmarks
+    .map(bookmark => {
+      const markup = `
+       <div class="bookmark">
+          <span class="bookmark-name">Google</span>
+          <a href="#" class="bookmark--btn btn-visit">Visit</a>
+          <button class="bookmark--btn btn-delete">Delete</button>
+        </div>
+  `;
+    })
+    .join();
 };
 
 form.addEventListener('submit', saveBookmark);
