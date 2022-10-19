@@ -19,10 +19,10 @@ const renderBookmarks = function (bookmarks) {
   bookmarks
     .map(bookmark => {
       const html = `
-       <div class="bookmark">
+       <div class="bookmark" data-name="${bookmark.name}">
           <span class="bookmark-name">${bookmark.name}</span>
           <div class="bookmark-btns">
-            <a href="${bookmark.url}" class="bookmark--btn btn-visit">Visit</a>
+            <a href="${bookmark.url}" target="_blank" class="bookmark--btn btn-visit">Visit</a>
             <button class="bookmark--btn btn-delete">Delete</button>
           </div>
         </div>
@@ -72,5 +72,13 @@ const loadSavedBookmarks = function () {
   renderBookmarks(bookmarks);
 };
 
+const deleteBookmark = function () {};
+
 window.addEventListener('load', loadSavedBookmarks);
 form.addEventListener('submit', saveBookmark);
+bookmarksEl.addEventListener('click', e => {
+  if (e.target.classList.contains('btn-delete')) {
+    const bookmark = e.target.closest('.bookmark');
+    console.log(bookmark.dataset.name);
+  }
+});
