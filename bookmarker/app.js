@@ -48,9 +48,7 @@ const saveBookmark = function (e) {
 
   if (localStorage.getItem('bookmarks') === null) {
     const bookmarks = [];
-    console.log(bookmarks);
     bookmarks.push(bookmark);
-    console.log(bookmarks);
     localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     renderBookmarks(bookmarks);
     return;
