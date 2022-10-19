@@ -15,6 +15,10 @@ const clearValues = function (...elArray) {
   elArray.forEach(el => (el.value = ''));
 };
 
+const getStoredBookmarks = function () {
+  return JSON.parse(localStorage.getItem('bookmarks'));
+};
+
 const renderBookmarks = function (bookmarks) {
   bookmarks
     .map(bookmark => {
@@ -55,7 +59,7 @@ const saveBookmark = function (e) {
   }
 
   if (localStorage.getItem('bookmarks') !== null) {
-    const bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+    const bookmarks = getStoredBookmarks();
     bookmarks.push(bookmark);
     localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     clearChildEls(bookmarksEl);
@@ -67,7 +71,7 @@ const saveBookmark = function (e) {
 const loadSavedBookmarks = function () {
   if (localStorage.getItem('bookmarks') === null) return;
 
-  const bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+  const bookmarks = getStoredBookmarks();
   clearChildEls(bookmarksEl);
   renderBookmarks(bookmarks);
 };
@@ -75,7 +79,7 @@ const loadSavedBookmarks = function () {
 const deleteBookmark = function (e) {
   if (e.target.classList.contains('btn-delete')) {
     const bookmarkEl = e.target.closest('.bookmark');
-    const bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+    const bookmarks = getStoredBookmarks();
 
     const index = bookmarks.findIndex(
       bookmark => bookmark.name === `${bookmarkEl.dataset.name}`
