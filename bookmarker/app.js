@@ -72,13 +72,24 @@ const loadSavedBookmarks = function () {
   renderBookmarks(bookmarks);
 };
 
-const deleteBookmark = function () {};
+const deleteBookmark = function (e) {};
 
 window.addEventListener('load', loadSavedBookmarks);
 form.addEventListener('submit', saveBookmark);
 bookmarksEl.addEventListener('click', e => {
   if (e.target.classList.contains('btn-delete')) {
-    const bookmark = e.target.closest('.bookmark');
-    console.log(bookmark.dataset.name);
+    const bookmarkEl = e.target.closest('.bookmark');
+    const bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+
+    const index = bookmarks.findIndex(
+      bookmark => bookmark.name === `${bookmarkEl.dataset.name}`
+    );
+
+    if (index > -1) {
+      bookmarks.splice(index, 1);
+      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+      clearChildEls(bookmarksEl);
+      renderBookmarks(bookmarks);
+    }
   }
 });
