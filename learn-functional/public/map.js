@@ -1,16 +1,5 @@
-function app(state, output, dispatch) {
+function app(state, output) {
   R.compose(append(view(state)), clear())(output);
-
-  const stop = dispatch(e => {
-    stop();
-    const newText = getText();
-
-    const newState = [...state, newText];
-
-    setText('');
-
-    app(newState, output, dispatch);
-  });
 }
 
 function view(state) {
@@ -44,6 +33,5 @@ app(
     { firstName: 'John', lastName: 'Doe', age: 25 },
     { firstName: 'Jim', lastName: 'Smith', age: 53 },
   ]),
-  getElem('message-list'),
-  buttonClick
+  getElem('message-list')
 );
