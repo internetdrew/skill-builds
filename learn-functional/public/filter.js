@@ -2,8 +2,8 @@ function app(state, output) {
   R.compose(append(view(state)), clear())(output);
 }
 
-function fullName({ firstName, lastName }) {
-  return `${firstName} ${lastName}`;
+function fullName({ firstName, lastName, age }) {
+  return `${firstName} ${lastName} is ${age} years old.`;
 }
 
 function view(state) {
@@ -11,6 +11,7 @@ function view(state) {
   const add = R.flip(append)(el);
 
   state
+    .filter(person => person.age > 30)
     .map(buildPerson) // [] HTMLElements
     // .forEach(person => append(personElement, el));
     .forEach(add);
