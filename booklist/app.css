@@ -32,6 +32,10 @@ body {
   font-size: 2.8rem;
 }
 
+.title h1 {
+  font-weight: 300;
+}
+
 .title span,
 .title .fa-book-open {
   color: #339af0;
@@ -94,7 +98,7 @@ body {
 
 .book {
   position: relative;
-  background-color: red;
+  background-color: #e9ecef;
 }
 
 .book button {
@@ -102,4 +106,9 @@ body {
   right: 2rem;
   top: 50%;
   transform: translateY(-50%);
+  background-color: #c92a2a;
+  color: #fff;
+  outline: 0;
+  border: 0;
+  padding: 1rem;
 }
