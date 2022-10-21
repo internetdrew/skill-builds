@@ -87,6 +87,6 @@ body {
 
 .list-submissions {
   border-top: 2px solid #ced4da;
-  padding: 1.4rem;
+  padding: 1.4rem 0;
   background-color: #dee2e6;
 }
