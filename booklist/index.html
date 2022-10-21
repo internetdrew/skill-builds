@@ -10,8 +10,34 @@
       src="https://kit.fontawesome.com/62494c37af.js"
       crossorigin="anonymous"
     ></script>
+
     <script defer src="./app.js"></script>
-    <title>Document</title>
+    <title>BookList App</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="title">
+        <i class="fa-solid fa-book-open fa-2x"></i>
+        <h1>My<span>Book</span>List</h1>
+      </div>
+
+      <form class="form">
+        <div class="form-control">
+          <label for="">Title</label>
+          <input type="text" id="title" />
+        </div>
+        <div class="form-control">
+          <label for="author">Author</label>
+          <input type="text" />
+        </div>
+        <div class="form-control">
+          <label for="isbn">ISBN#</label>
+          <input type="text" id="isbn" />
+        </div>
+        <input type="submit" value="Submit" class="submit" />
+      </form>
+
+      <div class="results"></div>
+    </div>
+  </body>
 </html>
