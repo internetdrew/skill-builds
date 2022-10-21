@@ -34,4 +34,16 @@ function message(content, index) {
 
 const buttonClick = on('click', getElem('message-button'));
 
-app(Object.freeze([]), getElem('message-list'), buttonClick);
+app(
+  Object.freeze([
+    {
+      firstName: 'Jane',
+      lastName: 'Doe',
+      age: 34,
+    },
+    { firstName: 'John', lastName: 'Doe', age: 25 },
+    { firstName: 'Jim', lastName: 'Smith', age: 53 },
+  ]),
+  getElem('message-list'),
+  buttonClick
+);
