@@ -7,15 +7,12 @@ function fullName({ firstName, lastName, age }) {
 }
 
 function view(state) {
-  const el = elem('div');
-  const add = R.flip(append)(el);
+  const add = R.flip(append);
 
-  state
+  return state
     .filter(person => person.age > 30)
     .map(buildPerson) // [] HTMLElements
-    // .forEach(person => append(personElement, el));
-    .forEach(add);
-  return el;
+    .reduce(add, elem('div'));
 }
 
 function buildPerson(person, index) {
