@@ -2,21 +2,27 @@ function app(state, output) {
   R.compose(append(view(state)), clear())(output);
 }
 
-function view(state) {
-  const el = elem('div');
-
-  return state.length > 0
-    ? R.pipe(...state.map((content, index) => append(message(content, index))))(
-        elem('div')
-      )
-    : el;
+function fullName({ firstName, lastName }) {
+  return `${firstName} ${lastName}`;
 }
 
-function message(content, index) {
+function view(state) {
+  const el = elem('div');
+  const add = R.flip(append)(el);
+
+  state
+    .map(buildPerson) // [] HTMLElements
+    // .forEach(person => append(personElement, el));
+    .forEach(add);
+  return el;
+}
+
+function buildPerson(person, index) {
   return R.compose(
-    append(text(content)),
+    append(text(fullName(person))),
     attr('data-index', index),
-    addClass('bg-warning'),
+    addClass('text-white'),
+    addClass('bg-secondary'),
     addClass('p-2')
   )(elem('div'));
 }
