@@ -1,5 +1,14 @@
-function app(state, output) {
+function app(state, output, dispatch) {
+  clear(output);
   append(view(state), output);
+
+  dispatch(e => {
+    const newText = getText();
+
+    const newState = [...state, newText];
+
+    app(newState, output, dispatch);
+  });
 }
 
 function view(state) {
@@ -23,4 +32,4 @@ function message(content, index) {
 
 const buttonClick = on('click', getElem('message-button'));
 
-app(Object.freeze([]), getElem('message-list'));
+app(Object.freeze([]), getElem('message-list'), buttonClick);

@@ -25,6 +25,8 @@ const attr = R.curry(function (attributeName, attributeValue, element) {
   return element;
 });
 
-const setDataId = attr('data-id');
+const clear = element => {
+  element.textContent = '';
 
-const setOne = setDataId('1');
+  return element;
+};
