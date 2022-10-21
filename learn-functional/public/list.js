@@ -1,11 +1,13 @@
 function app(state, output, dispatch) {
-  clear(output);
-  append(view(state), output);
+  R.compose(append(view(state)), clear())(output);
 
-  dispatch(e => {
+  const stop = dispatch(e => {
+    stop();
     const newText = getText();
 
     const newState = [...state, newText];
+
+    setText('');
 
     app(newState, output, dispatch);
   });
