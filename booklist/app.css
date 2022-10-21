@@ -37,6 +37,10 @@ body {
   color: #339af0;
 }
 
+.form {
+  margin: 4rem 0;
+}
+
 .form,
 .list {
   width: 70%;
@@ -69,8 +73,7 @@ body {
   background-color: #339af0;
 }
 
-.list {
-  margin: 4rem 0;
+.list-headings {
   border-top: 1px solid #ced4da;
 }
 
@@ -87,6 +90,16 @@ body {
 
 .list-submissions {
   border-top: 2px solid #ced4da;
-  padding: 1.4rem 0;
-  background-color: #dee2e6;
+}
+
+.book {
+  position: relative;
+  background-color: red;
+}
+
+.book button {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
