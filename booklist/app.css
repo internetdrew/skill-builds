@@ -19,7 +19,7 @@ body {
 
 .container {
   width: 96rem;
-  margin: 10rem auto;
+  margin: 2rem auto;
   display: grid;
   justify-items: center;
   padding: 2rem;
@@ -37,8 +37,9 @@ body {
   color: #339af0;
 }
 
-.form {
-  width: 50%;
+.form,
+.list {
+  width: 70%;
 }
 
 .form-control {
@@ -66,4 +67,26 @@ body {
   outline: none;
   border: none;
   background-color: #339af0;
+}
+
+.list {
+  margin: 4rem 0;
+  border-top: 1px solid #ced4da;
+}
+
+.headings,
+.book {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1.2rem;
+}
+
+.headings h2 {
+  font-size: 1.6rem;
+}
+
+.list-submissions {
+  border-top: 2px solid #ced4da;
+  padding: 1.4rem;
+  background-color: #dee2e6;
 }
