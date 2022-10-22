@@ -29,8 +29,7 @@ class UI {
   }
 
   static addBookToList(book) {
-    const header = document.getElementById('table-header');
-
+    const table = document.getElementById('table');
     const html = `
           <tr>
             <td>${book.title}</td>
@@ -40,7 +39,7 @@ class UI {
           </tr>
     `;
 
-    header.insertAdjacentHTML('afterend', html);
+    table.insertAdjacentHTML('beforeend', html);
   }
 }
 

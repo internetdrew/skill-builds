@@ -75,6 +75,7 @@ body {
   outline: none;
   border: none;
   background-color: #339af0;
+  cursor: pointer;
 }
 
 table {
@@ -89,5 +90,5 @@ th {
 }
 
 tr {
-  height: 4rem;
+  height: 5rem;
 }
