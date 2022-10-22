@@ -8,4 +8,40 @@ class Book {
   }
 }
 
-class UI {}
+class UI {
+  static displayBooks() {
+    const StoredBooks = [
+      {
+        title: 'Book One',
+        author: 'John Doe',
+        isbn: '632836',
+      },
+      {
+        title: 'Book Two',
+        author: 'Jane Doe',
+        isbn: '028366',
+      },
+    ];
+
+    const books = StoredBooks;
+
+    books.forEach(book => UI.addBookToList(book));
+  }
+
+  static addBookToList(book) {
+    const header = document.getElementById('table-header');
+
+    const html = `
+          <tr>
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>${book.isbn}</td>
+            <td>X</td>
+          </tr>
+    `;
+
+    header.insertAdjacentHTML('afterend', html);
+  }
+}
+
+window.addEventListener('load', UI.displayBooks);
