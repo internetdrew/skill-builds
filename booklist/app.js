@@ -31,11 +31,11 @@ class UI {
   static addBookToList(book) {
     const table = document.getElementById('table');
     const html = `
-          <tr>
+          <tr class="book">
             <td>${book.title}</td>
             <td>${book.author}</td>
             <td>${book.isbn}</td>
-            <td>X</td>
+            <td class="delete-btn">X</td>
           </tr>
     `;
 

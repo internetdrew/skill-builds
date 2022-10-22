@@ -92,3 +92,30 @@ th {
 tr {
   height: 5rem;
 }
+
+tbody:not(:first-of-type):nth-child(even) {
+  background-color: #ced4da;
+}
+
+.book {
+  position: relative;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.book:hover .delete-btn {
+  opacity: 1;
+}
+
+.book .delete-btn {
+  position: absolute;
+  background-color: #c92a2a;
+  color: #fff;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
