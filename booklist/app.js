@@ -1,5 +1,6 @@
 'use strict';
 const form = document.querySelector('.form');
+const table = document.querySelector('.table');
 
 class Book {
   constructor(title, author, isbn) {
@@ -11,10 +12,9 @@ class Book {
 
 class UI {
   static displayBooks() {
-    const storedBooks =
-      localStorage.getItem('books') === null
-        ? []
-        : JSON.parse(localStorage.getItem('books'));
+    const books = document.querySelectorAll('.book');
+    books.forEach(book => book.remove());
+    const storedBooks = Storage.getStoredBooks();
 
     if (storedBooks.length > 0)
       storedBooks.forEach(book => UI.addBookToList(book));
@@ -23,7 +23,7 @@ class UI {
   static addBookToList(book) {
     const table = document.getElementById('table');
     const html = `
-          <tr class="book">
+          <tr class="book" data-title="${book.title}">
             <td>${book.title}</td>
             <td>${book.author}</td>
             <td>${book.isbn}</td>
@@ -58,11 +58,37 @@ class Storage {
 
     books.push(book);
 
-    localStorage.setItem('books', JSON.stringify(books));
+    Storage.storeBooks(books);
     UI.displayBooks();
     form.reset();
+  }
+
+  static deleteBook(e) {
+    if (!e.target.classList.contains('delete-btn')) return;
+
+    const bookEl = e.target.closest('.book');
+    console.log(bookEl.dataset.title);
+
+    const books = Storage.getStoredBooks();
+
+    const index = books.findIndex(book => book.title === bookEl.dataset.title);
+
+    if (index > -1) books.splice(index, 1);
+    Storage.storeBooks(books);
+    UI.displayBooks();
+  }
+
+  static getStoredBooks() {
+    return localStorage.getItem('books') === null
+      ? []
+      : JSON.parse(localStorage.getItem('books'));
+  }
+
+  static storeBooks(books) {
+    localStorage.setItem('books', JSON.stringify(books));
   }
 }
 
 window.addEventListener('load', UI.displayBooks);
 form.addEventListener('submit', Storage.addBook);
+table.addEventListener('click', Storage.deleteBook);
